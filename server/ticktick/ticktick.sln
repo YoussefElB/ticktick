@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.Models", "TickTick.Models\TickTick.Models.csproj", "{70087E7D-A89C-4D34-8697-EA270459C8F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.App", "TickTick.App\TickTick.App.csproj", "{2F062ED5-541F-4806-98A8-A067FD9D4B41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{70087E7D-A89C-4D34-8697-EA270459C8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70087E7D-A89C-4D34-8697-EA270459C8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70087E7D-A89C-4D34-8697-EA270459C8F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F062ED5-541F-4806-98A8-A067FD9D4B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F062ED5-541F-4806-98A8-A067FD9D4B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F062ED5-541F-4806-98A8-A067FD9D4B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F062ED5-541F-4806-98A8-A067FD9D4B41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
