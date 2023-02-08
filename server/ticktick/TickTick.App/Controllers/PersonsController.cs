@@ -12,7 +12,14 @@ namespace TickTick.App.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            Person person = new Person("Yusup", "Elbu", "elmos@elm.os");
+            List<Location> adressList = new List<Location>
+            {
+                new Location("Generaal de witte laan", "Mechelen", "1244", "België", "3"),
+                new Location("Generaal de Rode laan", "Mechelen", "4124", "België", "2"),
+                new Location("Generaal de Blauwe laan", "Mechelen", "643", "België", "1")
+            };
+
+            Person person = new Person("Yusup", "Elbu", "elmos@elm.os", adressList);
             people.Add(person);
             return Ok(person);
         }
@@ -20,7 +27,7 @@ namespace TickTick.App.Controllers
         public IActionResult GetId(Guid id)
         {
             var matchedPerson = people.Find(person => person.PublicId == id);
-            return Ok(matchedPerson);
+            return Ok(Person.ConvertToDto(matchedPerson));
         }
     }
 }

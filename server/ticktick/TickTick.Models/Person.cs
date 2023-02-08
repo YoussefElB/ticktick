@@ -10,18 +10,19 @@
         public string? SocialSecurityNumber { get; set; }
         public DateTime? DoB { get; set; }
         public string? PhoneNumber { get; set; }
-        public Location? Address { get; set; }
+        public List<Location> Adresses { get; set; }
         public bool IsDeleted { get; private set; }
 
-        public Person(string firstName, string lastName, string email)
+        public Person(string firstName, string lastName, string email, List<Location> locations)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
+            Adresses = locations;
         }
         public void Delete()
         {
-            this.IsDeleted= true;
+            this.IsDeleted = true;
         }
         public void Update()
         {
@@ -43,6 +44,26 @@
             {
                 return this.PublicId == other?.PublicId;
             }
+        }
+
+        public static PersonDto ConvertToDto(Person person)
+        {
+            var adresses = new List<LocationDto>();
+            foreach (var l in person.Adresses)
+            {
+                adresses.Add(Location.ConvertToDto(l)); ;
+            }
+
+            return new PersonDto()
+            {
+                PublicId = person.PublicId,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                MiddleName = person.MiddleName,
+                Email = person.Email,
+                DoB = person.DoB,
+                Adresses =  adresses
+            };
         }
     }
 }

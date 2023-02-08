@@ -22,7 +22,7 @@ namespace TickTick.Models
         public string? State { get; set; }
         public string Country { get; set; }
         public string Nr { get; set; }
-        public LocationType MyProperty { get; set; } = LocationType.PRIMARY;
+        public LocationType LocationType { get; set; } = LocationType.PRIMARY;
 
         public Location(
         string street,
@@ -54,6 +54,17 @@ namespace TickTick.Models
             Nr = nr;
         }
 
+        public static LocationDto ConvertToDto(Location location)
+        {
+            return new LocationDto()
+            {
+                City= location.City,
+                Zipcode= location.Zipcode,
+                Country= location.Country,
+                Nr = location.Nr,
+                State= location.State
+            };
+        }
         public override string? ToString()
         {
             return $"{this.Street} {this.Nr} {this.City} {this.Country}";
