@@ -14,5 +14,15 @@ namespace TickTick.Models
         public string? State { get; set; }
         public string Country { get; set; }
         public string Nr { get; set; }
+
+        public static Location ConvertToModel(LocationDto loc)
+        {
+            return new Location(
+                loc.Street,
+                loc.City,
+                loc.Zipcode,
+                loc.Country,
+                loc.Nr);
+        }
     }
 }

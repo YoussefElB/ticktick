@@ -1,4 +1,6 @@
-﻿namespace TickTick.Models
+﻿using System;
+
+namespace TickTick.Models
 {
     public class Person : BaseAuditableEntity, IEquatable<Person>
     {
@@ -13,6 +15,7 @@
         public List<Location> Adresses { get; set; }
         public bool IsDeleted { get; private set; }
 
+        public Person() { }
         public Person(string firstName, string lastName, string email, List<Location> locations)
         {
             FirstName = firstName;
@@ -20,13 +23,39 @@
             Email = email;
             Adresses = locations;
         }
+        public Person(string firstName, string lastName, string email)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+        }
         public void Delete()
         {
             this.IsDeleted = true;
         }
-        public void Update()
+
+        public void AddLocation(Location location) {
+            if (Adresses == null) { }
+            {
+                this.Adresses = new List<Location>();
+            }
+            this.Adresses.Add(location);
+        }
+        public void RemoveLocation(Location location)
         {
-            return;
+            if (Adresses != null)
+            {
+                Adresses.Remove(location);
+            }
+        }
+
+        public void Update(PersonDto dto)
+        {
+            this.FirstName = dto.FirstName;
+            this.LastName = dto.LastName;
+            this.MiddleName = dto.MiddleName;
+            this.DoB = dto.DoB;
+            this.Email = dto.Email;
         }
 
         public override string? ToString()
@@ -64,6 +93,23 @@
                 DoB = person.DoB,
                 Adresses =  adresses
             };
+        }
+
+        public PersonDto ConvertToDto()
+        {
+            return new PersonDto()
+            {
+                PublicId = this.PublicId,
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                MiddleName = this.MiddleName,
+                DoB = this.DoB,
+                Email = this.Email
+            };
+        }
+        public void CreatePublicId()
+        {
+            this.PublicId = Guid.NewGuid();
         }
     }
 }

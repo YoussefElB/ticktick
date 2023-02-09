@@ -1,15 +1,41 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.OpenApi.Models;
+using TickTick.App.Extensions;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//^ this might be handy for real
+
+builder.Services.RegisterServices();
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(config =>
+{
+    config.SwaggerDoc(
+        "v1",
+        new OpenApiInfo
+        {
+            Title = "TickTick your ticks and tickles",
+            Version = "v1",
+            Contact = new OpenApiContact{
+                Email = "elmos@elm.os",
+                Name = "Deweloper Yusup",
+                Url = new Uri("https://chat.openai.com/")
+            }
+        });
+});
+/*
+builder.Services.AddApiVersioning(config =>
+{
+    config.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion();
+
+    //TODO: add versioning to the API :)
+});
+**/
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
