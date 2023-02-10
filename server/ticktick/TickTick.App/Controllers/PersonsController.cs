@@ -40,7 +40,7 @@ namespace TickTick.App.Controllers
                 return StatusCode(500, errored);
             }
         }
-
+        
         List<Location> adressList = new List<Location>
         {
             new Location("Generaal de witte laan", "Mechelen", "1244", "België", "3"),
@@ -48,7 +48,7 @@ namespace TickTick.App.Controllers
             new Location("Generaal de Blauwe laan", "Mechelen", "643", "België", "1")
         };
 
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id:guid}/locations")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -59,7 +59,7 @@ namespace TickTick.App.Controllers
             var matchedPerson = people.Find(person => person.PublicId == guid);
             return Ok(GetPersonLocations(guid));
         }
-
+        //
         [HttpGet("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -70,6 +70,7 @@ namespace TickTick.App.Controllers
             var matchedPerson = people.Find(person => person.PublicId == id);
             return Ok(Person.ConvertToDto(matchedPerson));
         }
+
         [HttpDelete("{id:guid}")]
         public IActionResult Delete(Guid id)
         {
@@ -103,5 +104,6 @@ namespace TickTick.App.Controllers
             AddPersonDto newPerson = svc.UpdatePerson(id, person);
             return Ok(newPerson);
         }
+        
     }
 }
