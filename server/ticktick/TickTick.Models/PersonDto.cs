@@ -12,10 +12,14 @@
         public static Person ConvertToModel(PersonDto person)
         {
             var adresses = new List<Location>();
-            foreach (var l in person.Adresses)
+            if (person.Adresses != null)
             {
-                adresses.Add(LocationDto.ConvertToModel(l)); ;
+                foreach (var l in person.Adresses)
+                {
+                    adresses.Add(LocationDto.ConvertToModel(l)); ;
+                }
             }
+
             Person convertedPerson = new Person()
             {
                 FirstName = person.FirstName,

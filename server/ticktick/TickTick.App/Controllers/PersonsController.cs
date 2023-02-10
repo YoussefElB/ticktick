@@ -14,7 +14,7 @@ namespace TickTick.App.Controllers
 
         public PersonsController(IPersonsService personService)
         {
-             svc = svc;
+            svc = personService;
         }
 
         [HttpGet]
@@ -59,7 +59,8 @@ namespace TickTick.App.Controllers
             var matchedPerson = people.Find(person => person.PublicId == guid);
             return Ok(GetPersonLocations(guid));
         }
-        //
+        
+
         [HttpGet("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
