@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TickTick.App.Dtos;
 using TickTick.App.ResponseWrappers;
 using TickTick.App.Services;
 using TickTick.Models;
@@ -40,13 +41,6 @@ namespace TickTick.App.Controllers
                 return StatusCode(500, errored);
             }
         }
-        
-        List<Location> adressList = new List<Location>
-        {
-            new Location("Generaal de witte laan", "Mechelen", "1244", "België", "3"),
-            new Location("Generaal de Rode laan", "Mechelen", "4124", "België", "2"),
-            new Location("Generaal de Blauwe laan", "Mechelen", "643", "België", "1")
-        };
 
         [HttpGet("{id:guid}/locations")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -69,7 +63,7 @@ namespace TickTick.App.Controllers
         public IActionResult GetId(Guid id)
         {
             var matchedPerson = people.Find(person => person.PublicId == id);
-            return Ok(Person.ConvertToDto(matchedPerson));
+            return Ok(matchedPerson);
         }
 
         [HttpDelete("{id:guid}")]
@@ -89,8 +83,7 @@ namespace TickTick.App.Controllers
         [ProducesResponseType(typeof(PersonDto), 200)]
         public IActionResult Post([FromBody] AddPersonDto person)
         {
-            PersonDto newPerson = svc.AddPerson(person);
-            people.Add(PersonDto.ConvertToModel(newPerson));
+            Person newPerson = svc.AddPerson(person);
             return CreatedAtAction(nameof(Get), new { id = newPerson.PublicId }, newPerson);
         }
 

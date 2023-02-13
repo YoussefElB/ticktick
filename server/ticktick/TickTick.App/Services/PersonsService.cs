@@ -1,10 +1,11 @@
-﻿using TickTick.Models;
+﻿using TickTick.App.Dtos;
+using TickTick.Models;
 
 namespace TickTick.App.Services
 {
     public class PersonsService : IPersonsService
     {
-        public PersonDto AddPerson(AddPersonDto dto)
+        public Person AddPerson(AddPersonDto dto)
         {
             Person person = new Person(
                 dto.FirstName,
@@ -12,7 +13,7 @@ namespace TickTick.App.Services
                 dto.Email);
 
             person.CreatePublicId();
-            return person.ConvertToDto();
+            return person;
         }
 
         public AddPersonDto UpdatePerson(Guid id, AddPersonDto persondto)

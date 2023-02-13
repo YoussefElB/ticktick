@@ -1,6 +1,6 @@
 ﻿using TickTick.Models;
 
-namespace TickTick.App.Services
+namespace TickTick.App.Dtos
 {
     public class AddPersonDto
     {
@@ -8,6 +8,7 @@ namespace TickTick.App.Services
         public string LastName { get; set; }
         public string? MiddleName { get; set; }
         public string Email { get; set; }
-        public DateTime? DoB { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public DateTime? DateOfDeath { get; set; }
     }
 }

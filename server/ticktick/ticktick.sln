@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.Models", "TickTick.Models\TickTick.Models.csproj", "{70087E7D-A89C-4D34-8697-EA270459C8F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TickTick.Models", "TickTick.Models\TickTick.Models.csproj", "{70087E7D-A89C-4D34-8697-EA270459C8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.App", "TickTick.App\TickTick.App.csproj", "{2F062ED5-541F-4806-98A8-A067FD9D4B41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TickTick.App", "TickTick.App\TickTick.App.csproj", "{2F062ED5-541F-4806-98A8-A067FD9D4B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.Data", "ClassLibrary1\TickTick.Data.csproj", "{5551E4A4-D751-47D8-8A9E-961D62C0918B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.Repositories", "TickTick.Repositories\TickTick.Repositories.csproj", "{BF848023-B80C-4DC7-B598-4E7F12452431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{2F062ED5-541F-4806-98A8-A067FD9D4B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F062ED5-541F-4806-98A8-A067FD9D4B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F062ED5-541F-4806-98A8-A067FD9D4B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5551E4A4-D751-47D8-8A9E-961D62C0918B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5551E4A4-D751-47D8-8A9E-961D62C0918B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5551E4A4-D751-47D8-8A9E-961D62C0918B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5551E4A4-D751-47D8-8A9E-961D62C0918B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF848023-B80C-4DC7-B598-4E7F12452431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF848023-B80C-4DC7-B598-4E7F12452431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF848023-B80C-4DC7-B598-4E7F12452431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF848023-B80C-4DC7-B598-4E7F12452431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
