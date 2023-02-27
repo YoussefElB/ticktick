@@ -1,4 +1,6 @@
-﻿namespace TickTick.Models
+﻿using TickTick.Models.Models;
+
+namespace TickTick.Models
 {
     public class PersonDto
     {

@@ -1,11 +1,19 @@
 using Microsoft.OpenApi.Models;
 using TickTick.App.Extensions;
+using TickTick.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddDbContext<TickTickDbContext>(options => {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+        });
 
         builder.Services.AddControllers();
 
@@ -28,6 +36,7 @@ internal class Program
                     }
                 });
         });
+
         /*
         builder.Services.AddApiVersioning(config =>
         {

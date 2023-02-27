@@ -1,6 +1,6 @@
 ﻿using TickTick.Models.Contracts;
 
-namespace TickTick.Models
+namespace TickTick.Models.Models
 {
     public class Speech : BaseEntity, IPlaylistItem
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TickTick.Models
+namespace TickTick.Models.Models
 {
     public class Person : BaseAuditableEntity, IEquatable<Person>
     {
@@ -24,7 +24,7 @@ namespace TickTick.Models
         }
         public void Delete()
         {
-            this.IsDeleted = true;
+            IsDeleted = true;
         }
         /*
         public void Update(PersonDto dto)
@@ -39,23 +39,23 @@ namespace TickTick.Models
         **/
         public override string? ToString()
         {
-            return $"{this.FirstName} {this.LastName} {this.Email}";
+            return $"{FirstName} {LastName} {Email}";
         }
 
         public bool Equals(Person? other)
         {
-            if (!string.IsNullOrEmpty(this.SocialSecurityNumber) && !string.IsNullOrEmpty(other?.SocialSecurityNumber))
+            if (!string.IsNullOrEmpty(SocialSecurityNumber) && !string.IsNullOrEmpty(other?.SocialSecurityNumber))
             {
-                return this.SocialSecurityNumber == other.SocialSecurityNumber;
+                return SocialSecurityNumber == other.SocialSecurityNumber;
             }
             else
             {
-                return this.PublicId == other?.PublicId;
+                return PublicId == other?.PublicId;
             }
         }
         public void CreatePublicId()
         {
-            this.PublicId = Guid.NewGuid();
+            PublicId = Guid.NewGuid();
         }
 
         public override bool Equals(object obj)

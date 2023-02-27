@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
 using TickTick.Models;
 
-namespace TickTick.Repositories
+namespace TickTick.Repositories.Repositories
 {
-    internal interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : BaseEntity
     {
         IQueryable<T> GetAll();
         Task<T> GetAsync(Expression<Func<T, bool>> predicate);

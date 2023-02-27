@@ -1,8 +1,10 @@
-﻿namespace TickTick.Models
+﻿using TickTick.Models.Models;
+
+namespace TickTick.Models.Dtos
 {
     public class PersonDto
     {
-        public Guid PublicId { get;  set; }
+        public Guid PublicId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string? MiddleName { get; set; }

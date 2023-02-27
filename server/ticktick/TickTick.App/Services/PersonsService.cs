@@ -1,5 +1,5 @@
 ﻿using TickTick.App.Dtos;
-using TickTick.Models;
+using TickTick.Models.Models;
 
 namespace TickTick.App.Services
 {

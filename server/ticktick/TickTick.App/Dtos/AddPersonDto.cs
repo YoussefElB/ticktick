@@ -1,4 +1,4 @@
-﻿using TickTick.Models;
+﻿using TickTick.Models.Models;
 
 namespace TickTick.App.Dtos
 {
@@ -10,5 +10,21 @@ namespace TickTick.App.Dtos
         public string Email { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public DateTime? DateOfDeath { get; set; }
+
+        public static Person ConvertToModel(AddPersonDto person)
+        {
+
+            Person convertedPerson = new Person()
+            {
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                MiddleName = person.MiddleName,
+                Email = person.Email,
+                DateOfBirth = person.DateOfBirth,
+            };
+            convertedPerson.CreatePublicId();
+
+            return convertedPerson;
+        }
     }
 }

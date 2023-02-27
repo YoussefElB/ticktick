@@ -1,4 +1,4 @@
-﻿namespace TickTick.Models
+﻿namespace TickTick.Models.Models
 {
     public enum PlaylistItemType
     {
@@ -9,8 +9,8 @@
     public class PlaylistItem : BaseAuditableEntity
     {
         public Guid PublicId { get; set; }
-        public string Title { get; set; }
-        public string Performer { get; set; }
+        public string? Title { get; set; }
+        public string? Performer { get; set; }
         public string? Text { get; set; }
         public string? Description { get; set; }
         public TimeSpan? Duration { get; set; }
