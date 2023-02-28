@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TickTick.App.Dtos;
 using TickTick.App.RequestHandlers;
+using TickTick.App.RequestHandlers.Commands;
+using TickTick.App.RequestHandlers.Querys;
 using TickTick.App.Services;
 using TickTick.Models;
 using TickTick.Models.Models;
@@ -73,10 +75,9 @@ namespace TickTick.App.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(PersonDto), 200)]
-        public IActionResult Put(Guid id, [FromBody] AddPersonDto person) 
+        public async Task<IActionResult> Put(Guid id, [FromBody] AddPersonDto person) 
         {
-            AddPersonDto newPerson = svc.UpdatePerson(id, person);
-            return Ok(newPerson);
+            return await ExecuteRequest(new UpdatePersonRequest(person, id));
         }
         
     }

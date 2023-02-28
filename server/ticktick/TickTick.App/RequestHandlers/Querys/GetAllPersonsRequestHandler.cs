@@ -1,24 +1,25 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using TickTick.App.Services;
 using TickTick.Models;
 using TickTick.Models.Models;
 using TickTick.Repositories.Repositories;
 
-namespace TickTick.App.RequestHandlers
+namespace TickTick.App.RequestHandlers.Querys
 {
     public class GetAllPersonsRequest : QueryBase<IEnumerable<PersonDto>>
     {
     }
     public class GetAllPersonsRequestHandler : IRequestHandler<GetAllPersonsRequest, IEnumerable<PersonDto>>
     {
-        private readonly IRepository<Person> _repository;
-        public GetAllPersonsRequestHandler(IRepository<Person> repo)
+        private readonly IPersonsService personsService;
+        public GetAllPersonsRequestHandler(IPersonsService repo)
         {
-            this._repository = repo;
+            personsService = repo;
         }
         public async Task<IEnumerable<PersonDto>> Handle(GetAllPersonsRequest request, CancellationToken cancellationToken)
         {
-            var people =  await _repository.GetAll().ToListAsync();
+            var people = await personsService.GetAllAsync();
             var dto = new List<PersonDto>();
 
             foreach (var person in people)

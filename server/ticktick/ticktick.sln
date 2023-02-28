@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.Data", "ClassLibra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.Repositories", "TickTick.Repositories\TickTick.Repositories.csproj", "{BF848023-B80C-4DC7-B598-4E7F12452431}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTick.Domain", "TickTick.Domain\TickTick.Domain.csproj", "{87ADF9D4-88F5-4E0E-A885-F3F8FAEBB0FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BF848023-B80C-4DC7-B598-4E7F12452431}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF848023-B80C-4DC7-B598-4E7F12452431}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF848023-B80C-4DC7-B598-4E7F12452431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87ADF9D4-88F5-4E0E-A885-F3F8FAEBB0FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87ADF9D4-88F5-4E0E-A885-F3F8FAEBB0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87ADF9D4-88F5-4E0E-A885-F3F8FAEBB0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87ADF9D4-88F5-4E0E-A885-F3F8FAEBB0FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

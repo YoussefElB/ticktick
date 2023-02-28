@@ -3,15 +3,13 @@ using TickTick.Models;
 
 namespace TickTick.Repositories.Repositories
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : class
     {
-        IQueryable<T> GetAll();
         Task<T> GetAsync(Expression<Func<T, bool>> predicate);
-        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllAsync();
         void Add(T entity);
-        void Update(T entity);
+        Task Update(T entity);
         void Delete(T entity);
         Task<int> SaveAsync();
-
     }
 }

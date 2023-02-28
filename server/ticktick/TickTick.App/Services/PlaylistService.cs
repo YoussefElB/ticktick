@@ -13,7 +13,7 @@ namespace TickTick.App.Services
         public void DeletePerson(Guid id)
         {
             throw new NotImplementedException();
-        }
+        } 
 
         public Playlist UpdatePlaylist(Guid id, AddPlaylistDto dto)
         {

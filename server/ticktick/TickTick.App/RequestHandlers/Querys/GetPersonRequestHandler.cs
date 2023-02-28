@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using TickTick.App.Services;
 using TickTick.Models;
 using TickTick.Models.Models;
 using TickTick.Repositories.Repositories;
 
-namespace TickTick.App.RequestHandlers
+namespace TickTick.App.RequestHandlers.Querys
 {
     public class GetPersonRequest : QueryBase<PersonDto>
     {
@@ -15,15 +16,16 @@ namespace TickTick.App.RequestHandlers
     }
     public class GetPersonRequestHandler : IRequestHandler<GetPersonRequest, PersonDto>
     {
-        private readonly IRepository<Person> _repository;
-        public GetPersonRequestHandler(IRepository<Person> repo)
+        private readonly IPersonsService _personService;
+
+        public GetPersonRequestHandler(IPersonsService personService)
         {
-            _repository = repo;
+            _personService = personService;
         }
 
         public async Task<PersonDto> Handle(GetPersonRequest request, CancellationToken cancellationToken)
         {
-            var p = await _repository.GetAsync(p => p.PublicId == request.PublicId);
+            var p = await _personService.GetPerson(request.PublicId);
             return PersonExtensions.ConvertToDto(p);
         }
     }

@@ -5,7 +5,7 @@ using TickTick.Models;
 
 namespace TickTick.Repositories.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly TickTickDbContext _dbContext;
         private readonly DbSet<T> _modelDbSet;
@@ -24,7 +24,6 @@ namespace TickTick.Repositories.Repositories
         {
             _modelDbSet.Attach(entity);
             _dbContext.Remove(entity);
-            _dbContext.Entry(entity).State = EntityState.Deleted;
         }
 
         public IQueryable<T> GetAll()
@@ -32,31 +31,30 @@ namespace TickTick.Repositories.Repositories
             return _dbContext.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbContext.Set<T>()
-                .Where(predicate)
                 .ToListAsync();
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
+        public Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
-            using (_dbContext)
-            {
-                return await _dbContext.Set<T>()
-                .FirstAsync(predicate);
-            }
+            return _dbContext.Set<T>()
+            .FirstAsync(predicate);
         }
-
         public async Task<int> SaveAsync()
         {
             return await _dbContext.SaveChangesAsync();
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
-            _modelDbSet.Attach(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            using (_dbContext)
+            {
+                _modelDbSet.Attach(entity);
+                _dbContext.Update(entity);
+                _dbContext.SaveChanges();
+            }
         }
     }
 }
