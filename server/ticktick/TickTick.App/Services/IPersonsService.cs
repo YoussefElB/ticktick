@@ -7,6 +7,8 @@ namespace TickTick.App.Services
     {
         void DeletePerson(Guid id);
         Person AddPerson(AddPersonDto dto);
-        AddPersonDto UpdatePerson(Guid id, AddPersonDto dto);
+        Task UpdatePerson(Guid id, AddPersonDto dto);
+        Task<IEnumerable<Person>> GetAllAsync();
+        Task<Person> GetPerson(Guid id);
     }
 }

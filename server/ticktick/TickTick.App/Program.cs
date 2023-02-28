@@ -19,6 +19,7 @@ internal class Program
 
         
         builder.Services.RegisterServices();
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(config =>
         {

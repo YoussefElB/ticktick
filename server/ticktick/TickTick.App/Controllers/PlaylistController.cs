@@ -26,8 +26,7 @@ namespace TickTick.App.Controllers
         [ProducesResponseType(typeof(AddPlaylistDto), 200)]
         public IActionResult Get()
         {
-            var theThingWeFound = _repo.GetAllAsync(x => x.Description == "something");
-            return Ok(theThingWeFound);
+            throw new NotImplementedException();
         }
 
         // GET: PlaylistController/Details/5

@@ -1,12 +1,13 @@
 ﻿using MediatR;
 using System.Net;
 using TickTick.App.Dtos;
+using TickTick.App.Services;
 using TickTick.Models.Models;
 using TickTick.Repositories.Repositories;
 
 namespace TickTick.App.RequestHandlers
 {
-    public class AddPersonRequest : QueryBase<HttpStatusCode>
+    public class AddPersonRequest : CommandBase<HttpStatusCode>
     {
         public AddPersonDto Person { get; set; }
         public AddPersonRequest(AddPersonDto person)
@@ -16,16 +17,16 @@ namespace TickTick.App.RequestHandlers
     }
     public class AddPersonRequestHandler : IRequestHandler<AddPersonRequest, HttpStatusCode>
     {
-        private readonly IRepository<Person> _repository;
+        private readonly IPersonsService _service;
 
-        public AddPersonRequestHandler(IRepository<Person> repo)
+        public AddPersonRequestHandler(IPersonsService service)
         {
-            this._repository = repo;
+            _service = service;
         }
+
         public async Task<HttpStatusCode> Handle(AddPersonRequest request, CancellationToken cancellationToken)
         {
-            var somethingThatsUhhhConverted = AddPersonDto.ConvertToModel(request.Person);
-            _repository.Add(somethingThatsUhhhConverted);
+            _service.AddPerson(request.Person);
             return HttpStatusCode.OK;
         }
     }
